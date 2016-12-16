@@ -4,7 +4,7 @@
 
 ## 範例操作步驟
 
-  1. 在 Microsoft Azure 建立 Azure 通知中樞。
+  1. [在 Microsoft Azure 建立 Azure 通知中樞](SetupAzureNotificationHubs.md)。
   2. 處理 Android 應用程式的推播通知。
   3. 處理 iOS 應用程式的推播通知。
   4. 在 ASP.NET MVC 網站中送出推播訊息。
