@@ -19,6 +19,8 @@ namespace XFNotification.Web
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.MessageHandlers.Add(new AuthenticationTestHandler());
         }
     }
 }
