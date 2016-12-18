@@ -14,8 +14,8 @@ namespace XFNotification.Web.Models
 
         private Notifications()
         {
-            Hub = NotificationHubClient.CreateClientFromConnectionString("<HUB_SEND_CONNECTIONSTRING>",
-                                                                         "<HUB_NAME>");
+            Hub = NotificationHubClient.CreateClientFromConnectionString("Endpoint=sb://chinhanhub.servicebus.windows.net/;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=YlJmnuS61RDJJSp55T4VyRZpNpvdtUzX2FdvCDOCjok=",
+                                                                         "skxamnotif");
         }
     }
 }

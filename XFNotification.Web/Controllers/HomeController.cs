@@ -35,16 +35,44 @@ namespace XFNotification.Web.Controllers
         {
             NotificationOutcome outcome = null;
             HttpStatusCode ret = HttpStatusCode.InternalServerError;
+            IList<string> toTags = null;
+
+            if (!string.IsNullOrEmpty(Devices))
+            {
+                string[] tags = Devices.Split(new char[] { ',' });
+                if (tags.Length > 0)
+                {
+                    toTags = new List<string>();
+                    foreach (string tag in tags)
+                    {
+                        toTags.Add(tag.Trim());
+                    }
+                }
+            }
 
             switch (DeviceType)
             {
                 case "android":
                     var notif = "{\"data\":{\"message\":\"" + Message + "\"}}";
-                    outcome = await Notifications.Instance.Hub.SendGcmNativeNotificationAsync(notif);
+                    if (toTags == null)
+                    {
+                        outcome = await Notifications.Instance.Hub.SendGcmNativeNotificationAsync(notif);
+                    }
+                    else
+                    {
+                        outcome = await Notifications.Instance.Hub.SendGcmNativeNotificationAsync(notif, toTags);
+                    }
                     break;
                 case "ios":
                     var alert = "{\"apns\":{\"alert\":\"" + Message + "\"}}";
-                    outcome = await Notifications.Instance.Hub.SendAppleNativeNotificationAsync(alert);
+                    if (toTags == null)
+                    {
+                        outcome = await Notifications.Instance.Hub.SendAppleNativeNotificationAsync(alert);
+                    }
+                    else
+                    {
+                        outcome = await Notifications.Instance.Hub.SendAppleNativeNotificationAsync(alert, toTags);
+                    }
                     break;
             }
 
