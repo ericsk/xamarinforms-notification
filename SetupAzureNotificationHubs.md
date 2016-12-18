@@ -17,3 +17,8 @@ Azure Notification Hubs 是整個推播通知的核心，它可以處理主流�
 
     ![](images/notifhubtest.png)
     _圖: 測試發送推播訊息_
+
+4. 在 Azure Notification Hub 中的 _Settings_ 頁面找到 **Access Policeis** 的設定頁面，這裡可以產生不同權限的連線字串，比方說行動裝置端若只收訊息則只要 _Listen_ 的權限即可。
+
+    ![](images/notifhubpolicies.png)
+    _圖: Azure Notification Hub 的存取原則及連線字串_
